@@ -1,0 +1,18 @@
+class Solution {
+    public void reverseString(char[] s) {
+        int fPoint = 0;
+        int lPoint = s.length-1;
+        
+        while(fPoint < lPoint){
+            
+            //swap
+            char temp = s[lPoint];
+            s[lPoint] = s[fPoint];
+            s[fPoint] = temp;
+            
+            //increment or decrement
+            fPoint++;
+            lPoint--;
+        }
+    }
+}
