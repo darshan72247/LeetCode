@@ -1,0 +1,48 @@
+class Solution {
+    public String reverseVowels(String s) {
+        
+        HashSet<String> vowels = new HashSet<String>();
+        vowels.add("a");
+        vowels.add("A");
+        vowels.add("e");
+        vowels.add("E");
+        vowels.add("i");
+        vowels.add("I");
+        vowels.add("o");
+        vowels.add("O");
+        vowels.add("u");
+        vowels.add("U");
+        
+        
+        ArrayList<String> values = new ArrayList<String>();
+        
+        for(int i=0;i<s.length();i++){
+            
+            String firstChar = s.substring(i,i+1);
+            
+            
+            if(vowels.contains(firstChar)){
+                values.add(firstChar);
+            }
+        }
+        
+        
+        int counter = values.size() - 1;
+        for(int i=0;i<s.length();i++){
+            
+            String firstChar = s.substring(i,i+1);
+            
+            
+            if(vowels.contains(firstChar)){
+                s = s.substring(0,i) + values.get(counter) + s.substring(i+1);
+                counter--;
+            }
+        }
+        
+        return s;
+    }
+    
+    
+    // to implement beeter solution like paldrimoe but just check if 1 vowel
+    //from the left and 1 vowel from the right then swap.
+}
