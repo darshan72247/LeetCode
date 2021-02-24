@@ -1,0 +1,39 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        
+        char[] firstString = s.toCharArray();
+        char[] secondString = t.toCharArray();
+        
+        boolean[] values = new boolean[firstString.length];
+        int initialPointer = 0;
+        
+        if(s.length() == 0){
+            return true;
+        }
+        
+        boolean flag = true;
+        
+        for(int i = 0; i < secondString.length && flag; i++){
+            
+            if(secondString[i] == firstString[initialPointer]){
+                values[initialPointer] = true;
+                initialPointer++;
+            }
+            
+            if(initialPointer == s.length()){
+                flag = false;
+            }
+            
+            
+        }
+        
+        for(int i=0; i<values.length;i++){
+            if(!values[i]){
+                return false;
+            } 
+        }
+        
+        return true;
+        
+    }
+}
