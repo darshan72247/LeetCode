@@ -1,0 +1,41 @@
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        
+        int numberOfNeg = -1;
+        
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] < 0){
+                numberOfNeg += 1;
+            }
+            nums[i] = nums[i] * nums[i];
+        }
+        
+        int[] ans = new int[nums.length];
+        int maxPoint = numberOfNeg + 1;
+        int i;;
+        
+        for(i= 0; i<nums.length && numberOfNeg != -1 && maxPoint < nums.length;i++){
+            if(nums[maxPoint] < nums[numberOfNeg]){
+                ans[i] = nums[maxPoint];
+                maxPoint += 1;
+            } else {
+                ans[i] = nums[numberOfNeg];
+                numberOfNeg -= 1;
+            }
+        }
+        
+        while(maxPoint != nums.length){
+            ans[i] = nums[maxPoint];
+            i += 1;
+            maxPoint += 1;
+        }
+        
+        while(numberOfNeg != -1){
+            ans[i] = nums[numberOfNeg];
+            numberOfNeg -= 1;
+            i += 1;
+        }
+        
+        return ans;
+    }
+}
