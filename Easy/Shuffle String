@@ -1,0 +1,13 @@
+class Solution {
+    public String restoreString(String s, int[] indices) {
+        
+        char arr1[] = new char[indices.length];
+        
+        for(int i=0;i<indices.length;i++){
+            
+            arr1[indices[i]] = s.charAt(i);
+        }
+
+        return String.valueOf(arr1);
+    }
+}
