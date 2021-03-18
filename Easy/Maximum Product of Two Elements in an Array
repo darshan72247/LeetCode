@@ -1,0 +1,6 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        Arrays.sort(nums); // merge Sort algorithm we get Time Complexity to be O(n logn) better than O(n^2)
+        return (nums[nums.length-2] - 1)*(nums[nums.length-1] - 1);
+    }
+}
