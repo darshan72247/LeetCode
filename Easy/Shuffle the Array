@@ -1,0 +1,13 @@
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int arr[] = new int[nums.length];
+        int tempPos = 0;
+        for(int i = 0;i<nums.length;i=i+2){
+            arr[i] = nums[tempPos];
+            arr[i+1] = nums[n];
+            n += 1;
+            tempPos += 1;
+        }
+        return arr;
+    }
+}
