@@ -1,0 +1,41 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int rangeSumBST(TreeNode root, int low, int high) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        ArrayList<Integer> values = visit(root,arr,low,high);
+        int sum = 0;
+        for(int i=0;i<values.size();i++){
+            sum += values.get(i);
+        }
+        return sum;
+    }
+    
+    public ArrayList visit(TreeNode root,ArrayList <Integer> arr, int low,int high){
+        if(root != null){
+            if(root.val >= low && root.val <= high){
+                arr.add(root.val);
+            }
+            if(root.left != null){
+                visit(root.left,arr,low,high);
+            }
+            if(root.right != null){
+                visit(root.right,arr,low,high);
+            }
+        }
+        return arr;
+    }
+}
