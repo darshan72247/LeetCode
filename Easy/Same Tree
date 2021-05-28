@@ -1,0 +1,49 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        boolean flag = true;
+        
+        // Check if both are null then its valid sameTree
+        if(p == null && q == null){
+            return true;
+        }
+        // If we reach here we know from above condition that one of the node is not null
+        // if that the case then we return false as it's not a valid SameTree
+        else if(p == null || q == null){
+            return false;
+        }
+        //If we reach here we know for sure that both q and p are not null
+        // So we check the value if they are different then it's not valid we return false
+        else if(p.val != q.val){
+            return false;
+        }
+        
+        //recursive call for left sub-tree
+        flag = isSameTree(p.left,q.left);
+        if (flag == false){
+            return flag;
+        }    
+        
+        //recursive call for right sub-tree
+        flag = isSameTree(p.right,q.right);
+        if(flag == false){
+            return flag;
+        }     
+        
+        return flag;
+    }
+}
