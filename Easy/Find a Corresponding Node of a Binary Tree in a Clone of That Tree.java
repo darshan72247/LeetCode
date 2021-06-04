@@ -9,21 +9,20 @@
  */
 
 class Solution {
-    private TreeNode temp = new TreeNode(100);
+    private TreeNode temp;
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
      
+        
         if(cloned.left != null){
-            getTargetCopy(original,cloned.left,target);
+            temp =  getTargetCopy(original,cloned.left,target);
         }
-        
         if(cloned.val == target.val){
-            temp.right = cloned;
+            return cloned;
         }
-        
         if(cloned.right != null){
-            getTargetCopy(original,cloned.right,target);
+            temp =  getTargetCopy(original,cloned.right,target);
         }
         
-        return temp.right;
+        return temp;
     }
 }
